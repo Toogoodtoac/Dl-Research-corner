@@ -1,0 +1,8 @@
+data/cifar-10-python.tar.gz filter=lfs diff=lfs merge=lfs -text
+data/winton/test_2.csv filter=lfs diff=lfs merge=lfs -text
+data/winton/the-winton-stock-market-challenge/train.csv filter=lfs diff=lfs merge=lfs -text
+hull_output/final_model.joblib filter=lfs diff=lfs merge=lfs -text
+data/winton/the-winton-stock-market-challenge/sample_submission_2.csv filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
