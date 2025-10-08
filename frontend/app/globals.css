@@ -1,0 +1,556 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Optimized grid layout animations */
+.search-result-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media (min-width: 640px) {
+  .search-result-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .search-result-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-result-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .search-result-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* Image hover effects */
+.image-result-card {
+  transition: all 0.2s ease-in-out;
+  min-height: 280px; /* Ensure consistent card heights */
+}
+
+.image-result-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Better spacing for image content */
+.image-result-card .aspect-video {
+  margin-bottom: 1rem; /* Increased space between image and content */
+}
+
+/* Improved text readability */
+.image-result-card .text-base {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.image-result-card .text-sm {
+  line-height: 1.4; /* Better line spacing for readability */
+  font-weight: 500; /* Slightly bolder for better contrast */
+}
+
+.image-result-card .font-semibold {
+  font-weight: 600; /* Better contrast for important text */
+}
+
+/* Enhanced frame ID display */
+.image-result-card .font-semibold.text-base {
+  color: #1f2937; /* Darker text for better contrast */
+  letter-spacing: 0.025em; /* Slight letter spacing for readability */
+}
+
+/* Score display enhancement */
+.image-result-card .text-blue-600 {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: #2563eb; /* Brighter blue for better visibility */
+}
+
+/* Timestamp display */
+.image-result-card .text-gray-600 {
+  color: #4b5563; /* Better contrast than lighter gray */
+  font-weight: 500;
+}
+
+/* Action button improvements */
+.image-result-card button,
+.image-result-card a {
+  transition: all 0.15s ease-in-out;
+}
+
+.image-result-card button:hover,
+.image-result-card a:hover {
+  transform: scale(1.05);
+}
+
+/* Focus animation */
+@keyframes focus-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.focus-animation {
+  animation: focus-pulse 1.5s ease-in-out;
+}
+
+/* List layout optimizations */
+.list-layout-item {
+  transition: all 0.15s ease-in-out;
+}
+
+.list-layout-item:hover {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive image grid */
+.responsive-image-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Mobile: 2-3 columns, larger minimum width for better readability */
+@media (max-width: 640px) {
+  .responsive-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet: 3-4 columns, comfortable viewing */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Desktop: 4-5 columns, optimal balance for readability */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .responsive-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Large Desktop: 4-5 columns, maintaining readability */
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .responsive-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Extra Large Desktop: 4-5 columns, comfortable spacing */
+@media (min-width: 1537px) {
+  .responsive-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+/* Dense mode for users who want maximum results visibility */
+.responsive-image-grid.dense-mode {
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+/* Dense mode responsive adjustments */
+@media (max-width: 640px) {
+  .responsive-image-grid.dense-mode {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-image-grid.dense-mode {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .responsive-image-grid.dense-mode {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .responsive-image-grid.dense-mode {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 1537px) {
+  .responsive-image-grid.dense-mode {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Dense mode card adjustments */
+.responsive-image-grid.dense-mode .image-result-card {
+  min-height: 200px;
+  padding: 0.5rem;
+}
+
+.responsive-image-grid.dense-mode .aspect-video {
+  margin-bottom: 0.5rem;
+}
+
+.responsive-image-grid.dense-mode .space-y-3 {
+  gap: 0.5rem;
+}
+
+.responsive-image-grid.dense-mode .text-sm {
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.responsive-image-grid.dense-mode .text-xs {
+  font-size: 0.625rem;
+  line-height: 1.1;
+}
+
+/* Dense mode button adjustments */
+.responsive-image-grid.dense-mode button,
+.responsive-image-grid.dense-mode a {
+  padding: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.responsive-image-grid.dense-mode .w-4 {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Detailed mode for users who want more information and better video-frame relationships */
+.responsive-image-grid.detailed-mode {
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* Detailed mode responsive adjustments */
+@media (max-width: 640px) {
+  .responsive-image-grid.detailed-mode {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-image-grid.detailed-mode {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .responsive-image-grid.detailed-mode {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .responsive-image-grid.detailed-mode {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1537px) {
+  .responsive-image-grid.detailed-mode {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+/* Detailed mode card adjustments */
+.responsive-image-grid.detailed-mode .image-result-card {
+  min-height: 380px;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.responsive-image-grid.detailed-mode .aspect-video {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-image-grid.detailed-mode .space-y-3 {
+  gap: 1rem;
+}
+
+.responsive-image-grid.detailed-mode .text-sm {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.responsive-image-grid.detailed-mode .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Detailed mode enhanced metadata display */
+.responsive-image-grid.detailed-mode .metadata-section {
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #3b82f6;
+  margin-top: 0.75rem;
+}
+
+.responsive-image-grid.detailed-mode .video-info {
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.responsive-image-grid.detailed-mode .timestamp-info {
+  color: #059669;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.responsive-image-grid.detailed-mode .score-info {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Detailed mode button enhancements */
+.responsive-image-grid.detailed-mode button,
+.responsive-image-grid.detailed-mode a {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.responsive-image-grid.detailed-mode button:hover,
+.responsive-image-grid.detailed-mode a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.responsive-image-grid.detailed-mode .w-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Fixed header improvements */
+.fixed-header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Better spacing for header elements */
+.header-search-section {
+  margin-right: 2rem; /* Add space between search bar and controls */
+}
+
+.header-controls-section {
+  margin-left: 2rem; /* Add space between controls and search bar */
+}
+
+/* Enhanced spacing for form controls */
+.form-control-group {
+  margin-right: 1.5rem;
+}
+
+.form-control-group:last-child {
+  margin-right: 0;
+}
+
+/* Improved label spacing */
+.form-label {
+  margin-right: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Better select styling */
+.form-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+/* Responsive header spacing */
+@media (min-width: 1024px) {
+  .header-search-section {
+    margin-right: 3rem;
+  }
+
+  .header-controls-section {
+    margin-left: 3rem;
+  }
+}
+

@@ -1,0 +1,3 @@
+# This file ensures the data directory is tracked in Git
+# The actual data files are ignored via .gitignore
+# Team members need to set up their own data or download from shared source

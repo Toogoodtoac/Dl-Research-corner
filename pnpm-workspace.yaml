@@ -1,0 +1,8 @@
+packages:
+  - frontend
+  - backend
+
+ignoredBuiltDependencies:
+  - canvas
+  - sharp
+  - unrs-resolver

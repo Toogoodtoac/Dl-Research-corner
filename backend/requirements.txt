@@ -1,0 +1,70 @@
+# FastAPI and web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Data processing and ML
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+Pillow>=10.0.0
+faiss-cpu>=1.7.4
+opencv-python>=4.8.0
+
+# CLIP and related models
+# clip @ git+https://github.com/openai/CLIP.git
+# ftfy
+# regex
+transformers>=4.30.0
+
+# Translation
+deep-translator>=1.11.0
+
+# HTTP requests
+requests>=2.31.0
+aiofiles>=23.2.0
+
+# Caching and async
+redis>=5.0.0
+aioredis>=2.0.0
+
+# Configuration and environment
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+
+# Logging and monitoring
+structlog>=23.2.0
+rich>=13.7.0
+psutil==5.9.8
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+httpx>=0.25.0
+
+# Development
+black>=23.11.0
+isort>=5.12.0
+flake8>=6.1.0
+
+# New dependencies for indexing pipeline
+h5py>=3.8.0
+scipy>=1.10.0
+
+# Text indexing (Lucene or Whoosh fallback)
+# Try Lucene first, fallback to Whoosh
+whoosh>=2.7.4
+
+# LongCLIP dependency fix
+backports.tarfile>=1.2.0
+
+# Optional: Lucene (requires Java)
+# pylucene>=9.0.0
+
+sentencepiece
+timm
+torchmetrics
+tensorboardX

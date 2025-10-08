@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - mm-data-network
+
+  # Backend (FastAPI)
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=true
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ../backend:/app
+      - ../support_models:/app/support_models:ro
+      - ../data:/app/data:ro
+      - ../dict:/app/dict:ro
+    depends_on:
+      - redis
+    networks:
+      - mm-data-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - mm-data-network
+    command: redis-server --appendonly yes
+
+  # Optional: PostgreSQL for metadata storage
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=mm_data
+      - POSTGRES_USER=mm_user
+      - POSTGRES_PASSWORD=mm_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mm-data-network
+
+volumes:
+  redis_data:
+  postgres_data:
+
+networks:
+  mm-data-network:
+    driver: bridge
